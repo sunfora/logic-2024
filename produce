@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+echo $1
+scribble --dest build $1
+echo $1 > build/watch
