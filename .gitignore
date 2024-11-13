@@ -1,0 +1,4 @@
+build/katex
+build/*.html
+build/*.css
+build/*.js
