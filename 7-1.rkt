@@ -29,9 +29,9 @@
 @$${
   \begin{align*}
     \forall a.      & \quad P_{e_1}(e_1) \leftrightarrow P_{e_1}(a) \\
-    \land & \quad P_{e_1}(e_2) \leftrightarrow P_{e_1}(a) \\
+    \lor & \quad P_{e_1}(e_2) \leftrightarrow P_{e_1}(a) \\
     \vdots \\
-    \land & \quad P_{e_1}(e_n) \leftrightarrow P_{e_1}(a)
+    \lor & \quad P_{e_1}(e_n) \leftrightarrow P_{e_1}(a)
   \end{align*}
 }
 
