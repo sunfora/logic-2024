@@ -6,7 +6,7 @@ session_start();
 <!DOCTYPE html>
 
 <?
-$current_file = basename(trim(`cat watch`));
+$current_file = trim(`cat watch`);
 $name = pathinfo($current_file, PATHINFO_FILENAME);
 ?>
 
@@ -111,7 +111,7 @@ window.addEventListener('DOMContentLoaded', function() {
 </script>
 <?
 
-$files = explode(PHP_EOL, trim(`ls .. | grep '\.rkt'`));
+$files = explode(PHP_EOL, trim(`find .. -name '*.rkt'`));
 ?> 
   <select> 
     <?
@@ -124,8 +124,8 @@ $files = explode(PHP_EOL, trim(`ls .. | grep '\.rkt'`));
 <?
 
 if (needs_rebuild($current_file)) {
-  $_SESSION[$current_file] = filemtime("../$current_file");
-  $_SESSION[$current_file . "log"] = htmlspecialchars(`scribble ../$current_file 2>&1`);
+  $_SESSION[$current_file] = filemtime($current_file);
+  $_SESSION[$current_file . "log"] = htmlspecialchars(`scribble $current_file 2>&1`);
 }
 $log = $_SESSION[$current_file . "log"];
 echo "<div class='log closed'><pre>$log</pre></div>";

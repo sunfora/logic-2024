@@ -1,12 +1,10 @@
 <?
 function needs_rebuild($current_file) {
-  if (!file_exists("../$current_file")) {
+  if (!file_exists("$current_file")) {
     return null;
   }
 
-  $pos_ext = strrpos($current_file, ".");
-  $name = substr($current_file, 0, $pos_ext);
-  $last_modified = filemtime("../$current_file");
+  $last_modified = filemtime($current_file);
 
   if (empty($_SESSION[$current_file])) {
     return true;
