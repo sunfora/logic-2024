@@ -1,4 +1,9 @@
-(defun handle-Z (args) 0)
+(declaim 
+  (ftype (function (t) t) subs))
+
+(defun handle-Z (args) 
+  (declare (ignore args))
+  0)
 
 (defun handle-N (args)
   (+ 1 (eval (car args))))
@@ -6,6 +11,7 @@
 (defun handle-U (dim args)
   (destructuring-bind (n k)
     dim
+    (declare (ignore n))
     (nth (- k 1) args)))
 
 (defun handle-S (expr args)
@@ -25,7 +31,6 @@
         `(rec ,g ,`(,@x ,(- y 1)
                         (rec (R ,f ,g)
                              ,`(,@x ,(- y 1)))))))))
-
 (defun arity (expr)
   (cond ((equalp expr 'Z)
          1)
@@ -65,4 +70,6 @@
         (T expr)))
 
 (defmacro defrec (name expr)
-  `(setf ,name (quote ,(subs expr))))
+  `(progn 
+     (defvar ,name)
+     (setf ,name (quote ,(subs expr)))))
