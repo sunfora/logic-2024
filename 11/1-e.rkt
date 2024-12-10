@@ -27,7 +27,7 @@
 
 @section{Lt, Gt, ...}
 
-@verbatim {
+@verbatim{
   Leq = λa.λb. IsZero (Minus a b)
   Geq = λa.λb. Leq b a
   Lt = λa.λb. Not (Geq a b)
@@ -37,3 +37,4 @@
 
 Ну понятно стандартный трюк, как в примитивно рекурсивных.
 Имея IsZero можно всё остальное в целом выразить.
+fewfwef
