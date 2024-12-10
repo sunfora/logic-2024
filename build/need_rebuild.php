@@ -3,7 +3,6 @@ function needs_rebuild($current_file) {
   if (!file_exists("$current_file")) {
     return null;
   }
-
   $last_modified = filemtime($current_file);
 
   if (empty($_SESSION[$current_file])) {

@@ -93,6 +93,12 @@ window.addEventListener('DOMContentLoaded', function() {
   });
   setInterval(check, 500);
   const log = document.querySelector(".log");
+
+  const success = t => /\[Output to .*\.html\]/.test(t)
+  if (success(log.textContent)) {
+    log.style.background = 'yellowgreen' 
+  }
+
   log.addEventListener(
     "dblclick",
     (e) => {
@@ -127,7 +133,8 @@ if (needs_rebuild($current_file)) {
   $_SESSION[$current_file] = filemtime($current_file);
   $_SESSION[$current_file . "log"] = htmlspecialchars(`scribble $current_file 2>&1`);
 }
+
 $log = $_SESSION[$current_file . "log"];
-echo "<div class='log closed'><pre>$log</pre></div>";
+  echo "<div class='log closed'><pre>$log</pre></div>";
 
 include("$name.html");
