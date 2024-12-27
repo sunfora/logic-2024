@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+
+set -m
+
+pushd build
+php -S localhost:8080 &
+open http://localhost:8080
+fg %1
